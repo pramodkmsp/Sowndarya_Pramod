@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(lsof -iTCP -sTCP:LISTEN -P)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:4200/hero-bg2.mp4)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(lsof -ti:4200)",
+      "Bash(kill 71710 77152)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" \"https://pramodkmsp.github.io/Pramod_Sowndarya/couple.jpg\")",
+      "Bash(npx ng *)",
+      "Bash(npx angular-cli-ghpages *)",
+      "Bash(gh pr create --title 'feat: engagement invite animations, UI polish & GitHub Pages deployment' --body ' *)",
+      "Bash(brew install *)",
+      "Bash(/opt/homebrew/bin/gh pr create --title 'feat: engagement invite animations, UI polish & GitHub Pages deployment' --body ' *)"
+    ]
+  }
+}

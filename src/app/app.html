@@ -1,0 +1,106 @@
+<!-- Envelope open burst effect -->
+<div class="burst-overlay" *ngIf="showBurst" aria-hidden="true">
+  <div class="burst-light"></div>
+  <div class="burst-rays"></div>
+
+  <svg *ngFor="let p of burstPetals" class="burst-petal" viewBox="0 0 40 60"
+    [style.width]="p.size" [style.height]="p.size"
+    [style.--angle]="p.angle" [style.--distance]="p.distance"
+    [style.animationDelay]="p.delay">
+    <path d="M20 58 C10 45 0 30 5 15 C8 5 20 0 20 0 C20 0 32 5 35 15 C40 30 30 45 20 58Z"
+      fill="url(#burstPetalGrad)"/>
+    <defs>
+      <linearGradient id="burstPetalGrad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#ffb3c1"/>
+        <stop offset="100%" stop-color="#e8002d"/>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <div class="burst-heart" *ngFor="let h of burstHearts"
+    [style.left]="h.left"
+    [style.fontSize]="h.size"
+    [style.animationDelay]="h.delay"
+    [style.--drift]="h.drift">♥</div>
+</div>
+
+<!-- Background music (plays after envelope opens) -->
+<audio #bgMusic src="wedding-music.mp3" loop preload="auto"></audio>
+
+<!-- Floating music toggle -->
+<button class="music-toggle" (click)="toggleMusic()" [attr.aria-label]="isMuted ? 'Unmute music' : 'Mute music'">
+  <svg *ngIf="!isMuted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+    <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+    <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+  </svg>
+  <svg *ngIf="isMuted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+    <line x1="23" y1="9" x2="17" y2="15"/>
+    <line x1="17" y1="9" x2="23" y2="15"/>
+  </svg>
+</button>
+
+<!-- Envelope Invitation Opener -->
+<app-invitation (opened)="onInvitationOpened()" (envelopeClicked)="playAudio()">
+
+  <!-- Main content (always rendered, sits under the envelope overlay) -->
+  <div class="page visible">
+
+    <!-- Hero: GSAP DrawSVG script names + RSVP button -->
+    <app-hero></app-hero>
+
+    <!-- Photo moment: two photos + quote -->
+    <section class="demo-section reveal">
+      <app-photo-moment></app-photo-moment>
+    </section>
+
+    <!-- Section Divider: floral vines CSS keyframes -->
+    <app-section-divider class="reveal"></app-section-divider>
+
+    <!-- Couple portrait + Bible verses -->
+    <section class="demo-section reveal">
+      <app-couple></app-couple>
+    </section>
+
+    <app-section-divider class="reveal"></app-section-divider>
+
+    <!-- About section -->
+    <section class="demo-section reveal">
+      <!-- <h2>Save the Date</h2>
+      <p>
+        Join us as we celebrate the union of two souls — an evening of love,
+        laughter, and dancing under the stars.
+      </p> -->
+      <!-- <app-rsvp-button></app-rsvp-button> -->
+
+      <app-count-down></app-count-down>
+    </section>
+
+    <!-- Section Divider repeated -->
+    <app-section-divider class="reveal"></app-section-divider>
+
+    <!-- Venue section -->
+    <section class="demo-section reveal">
+      <!-- <h2>The Venue</h2>
+      <p>
+        Grand Ballroom · Hyderabad<br>
+        Doors open at 6:30 PM · Ceremony at 7:00 PM
+      </p> -->
+      <app-venue></app-venue>
+    </section>
+
+    <app-section-divider class="reveal"></app-section-divider>
+
+    <!-- Places to Visit Near Yanam -->
+    <section class="demo-section reveal">
+      <app-places-to-visit></app-places-to-visit>
+    </section>
+
+    <app-section-divider class="reveal"></app-section-divider>
+
+  </div>
+
+  <router-outlet />
+
+</app-invitation>

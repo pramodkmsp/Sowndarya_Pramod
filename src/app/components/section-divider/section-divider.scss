@@ -1,0 +1,123 @@
+.divider {
+  width: 100%;
+  max-width: 900px;
+  margin: 0.5rem auto;
+  overflow: visible;
+
+  &__svg {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+}
+
+/* ── Rule lines: start undrawn, draw on scroll ── */
+.rule {
+  stroke-dasharray: 350;
+  stroke-dashoffset: 350;
+  opacity: 0;
+
+  &--left-outer, &--right-outer {
+    transition: stroke-dashoffset 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s,
+                opacity 0.3s ease 0.1s;
+  }
+  &--right-outer { stroke-dashoffset: -350; }
+
+  &--left-inner, &--right-inner {
+    transition: stroke-dashoffset 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.35s,
+                opacity 0.3s ease 0.35s;
+  }
+  &--left-inner  { stroke-dasharray: 280; stroke-dashoffset: 280; }
+  &--right-inner { stroke-dasharray: 270; stroke-dashoffset: -270; }
+}
+
+:host(.visible) .rule {
+  stroke-dashoffset: 0;
+  opacity: 1;
+}
+
+/* ── Accent dots: pop in on scroll ── */
+.dot {
+  opacity: 0;
+  transform: scale(0);
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: opacity 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+              transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  &--l1, &--r1 { transition-delay: 0.9s; }
+  &--l2, &--r2 { transition-delay: 1.05s; }
+  &--l3, &--r3 { transition-delay: 1.2s; }
+}
+
+:host(.visible) .dot {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ── Center ornament: fade in on scroll ── */
+.center-ornament {
+  opacity: 0;
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1) 0.5s;
+}
+
+:host(.visible) .center-ornament {
+  opacity: 1;
+}
+
+/* ── Ambient animations (always running once visible) ── */
+.diamond {
+  transform-origin: 0 0;
+  transform-box: fill-box;
+  animation: diamondSpin 12s linear infinite;
+}
+
+@keyframes diamondSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.ring--outer {
+  transform-origin: 0 0;
+  transform-box: fill-box;
+  animation: ringSpin 20s linear infinite reverse;
+}
+
+.ring--inner {
+  transform-origin: 0 0;
+  transform-box: fill-box;
+  animation: ringPulse 3s ease-in-out infinite;
+}
+
+@keyframes ringSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes ringPulse {
+  0%, 100% { opacity: 0.4; stroke: rgba(200,160,255,0.4); }
+  50%       { opacity: 0.9; stroke: rgba(220,180,255,0.7); }
+}
+
+.scroll {
+  animation: scrollBreath 4s ease-in-out infinite;
+  &--r { animation-delay: 2s; }
+}
+
+@keyframes scrollBreath {
+  0%, 100% { opacity: 0.5; }
+  50%       { opacity: 1; }
+}
+
+.accent-stars circle {
+  animation: starTwinkle 2.5s ease-in-out infinite;
+
+  &:nth-child(2) { animation-delay: 0.6s; }
+  &:nth-child(3) { animation-delay: 1.2s; }
+  &:nth-child(4) { animation-delay: 1.8s; }
+}
+
+@keyframes starTwinkle {
+  0%, 100% { opacity: 0.3; r: 1;   }
+  50%       { opacity: 1;   r: 1.4; }
+}

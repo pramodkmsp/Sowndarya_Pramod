@@ -1,0 +1,45 @@
+<div class="countdown__header" [class.visible]="isVisible">
+  <span class="countdown__script">Save the Date</span>
+  <div class="countdown__divider">
+    <span class="countdown__divider-line"></span>
+    <span class="countdown__divider-diamond">◆</span>
+    <span class="countdown__divider-line"></span>
+  </div>
+  <p class="countdown__target">18 · 09 · 2026</p>
+</div>
+
+<!-- The live countdown flexbox -->
+<div class="countdown" [class.visible]="isVisible">
+  <div class="countdown__block">
+    <span class="countdown__number" [class.flipping]="flipping['days']">{{ days }}</span>
+    <span class="countdown__label">Days</span>
+  </div>
+  <div class="countdown__block">
+    <span class="countdown__number" [class.flipping]="flipping['hours']">{{ hours | number:'2.0-0' }}</span>
+    <span class="countdown__label">Hours</span>
+  </div>
+  <div class="countdown__block">
+    <span class="countdown__number" [class.flipping]="flipping['minutes']">{{ minutes | number:'2.0-0' }}</span>
+    <span class="countdown__label">Mins</span>
+  </div>
+  <div class="countdown__block">
+    <span class="countdown__number" [class.flipping]="flipping['seconds']">{{ seconds | number:'2.0-0' }}</span>
+    <span class="countdown__label">Secs</span>
+  </div>
+</div>
+
+<p class="countdown__tagline" [class.visible]="isVisible">
+  Join us as we celebrate the union of two souls — an evening of love,
+  laughter, and dancing under the stars.
+</p>
+
+<div class="calendar-buttons" [class.visible]="isVisible">
+  <a class="calendar-btn calendar-btn--google" [href]="googleCalendarUrl" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    Add to Google Calendar
+  </a>
+  <button class="calendar-btn calendar-btn--apple" (click)="downloadIcs()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    Add to Apple Calendar
+  </button>
+</div>

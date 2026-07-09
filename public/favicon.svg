@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="ringGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffc2d1"/>
+      <stop offset="100%" stop-color="#e8002d"/>
+    </linearGradient>
+    <linearGradient id="ringGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffb3c6"/>
+      <stop offset="100%" stop-color="#c9184a"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Left ring -->
+  <circle cx="24" cy="34" r="13" fill="none" stroke="url(#ringGrad1)" stroke-width="5"/>
+
+  <!-- Right ring -->
+  <circle cx="40" cy="34" r="13" fill="none" stroke="url(#ringGrad2)" stroke-width="5"/>
+
+  <!-- Heart above rings -->
+  <path d="M32 22 C32 22 28 17 24.5 17 C21 17 18 19.5 18 23 C18 26.5 22 30 32 36 C42 30 46 26.5 46 23 C46 19.5 43 17 39.5 17 C36 17 32 22 32 22Z"
+        fill="url(#ringGrad1)" opacity="0.9"/>
+</svg>

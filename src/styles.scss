@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --font-display: 'Cormorant Garamond', serif;
+  --font-accent: 'Cinzel', serif;
+  --font-body: 'Manrope', sans-serif;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  background: #000000;
+  color: #e8d5f5;
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior-y: none;
+}
+
+.page {
+  background: linear-gradient(160deg, #0d0010 0%, #1a0030 40%, #0d0010 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  min-height: 100svh;
+
+  @media (max-width: 768px) {
+    background-attachment: scroll;
+  }
+}
+
+/* ── Viewport-entry reveal — opacity + transform only (GPU-composited) ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px) scale(0.97);
+  transition:
+    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  @media (max-width: 768px) {
+    transform: translateY(20px);
+    transition-duration: 0.5s;
+
+    &.visible {
+      transform: translateY(0);
+    }
+  }
+}
+
+/* ── Demo sections ───────────────────────────────── */
+.demo-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(4rem, 10vw, 7rem) 2rem;
+  gap: 2rem;
+
+  @media (max-width: 600px) {
+    padding: 3.5rem 1rem;
+  }
+
+  h2 {
+    font-family: var(--font-accent);
+    font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+    font-weight: 500;
+    color: #c9a0e8;
+    margin: 0;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  p {
+    font-family: var(--font-body);
+    color: #b898d4;
+    font-size: 1rem;
+    max-width: 480px;
+    text-align: center;
+    line-height: 1.85;
+    letter-spacing: 0.01em;
+    margin: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

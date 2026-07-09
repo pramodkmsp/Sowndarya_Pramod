@@ -1,0 +1,258 @@
+.countdown__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.5rem;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.countdown__script {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(2.8rem, 8vw, 4.5rem);
+  color: #e0b8ff;
+  line-height: 1.1;
+  text-shadow: 0 0 40px rgba(180, 120, 255, 0.4);
+}
+
+.countdown__divider {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 260px;
+}
+
+.countdown__divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(180, 120, 255, 0.5), transparent);
+}
+
+.countdown__divider-diamond {
+  font-size: 0.5rem;
+  color: rgba(180, 120, 255, 0.7);
+  letter-spacing: 0;
+}
+
+.countdown__target {
+  font-family: var(--font-accent);
+  font-size: 0.85rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #b898d4;
+  margin: 0;
+}
+
+.countdown__tagline {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: #b898d4;
+  text-align: center;
+  max-width: 420px;
+  line-height: 1.8;
+  margin: 0 0 1.5rem;
+  font-style: italic;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.8s ease 0.7s, transform 0.8s ease 0.7s;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.calendar-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 0.5rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.8s ease 0.9s, transform 0.8s ease 0.9s;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.calendar-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 48px;
+  padding: 0.75rem 1.2rem;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(180, 120, 255, 0.4);
+  background: rgba(255, 255, 255, 0.04);
+  color: #c9a0e8;
+
+  svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+  }
+
+  &:hover {
+    background: rgba(180, 120, 255, 0.15);
+    border-color: rgba(180, 120, 255, 0.7);
+    color: #e0b8ff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(120, 40, 200, 0.25);
+  }
+
+  &:active {
+    transform: translateY(0) scale(0.98);
+  }
+
+  &:focus-visible {
+    outline: 2px solid rgba(201, 169, 110, 0.8);
+    outline-offset: 3px;
+  }
+}
+
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 2.5rem 0;
+
+  @media (max-width: 600px) { gap: 0.8rem; }
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 85px;
+    padding: 1.2rem 1rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(180, 120, 240, 0.25);
+    border-radius: 10px;
+    box-shadow:
+      0 8px 24px rgba(80, 0, 120, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    position: relative;
+    overflow: hidden;
+
+    /* Start hidden; revealed when .countdown.visible */
+    opacity: 0;
+    transform: translateY(24px) scale(0.92);
+    transition:
+      opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 0.4s ease;
+
+    &:nth-child(1) { transition-delay: 0.05s; }
+    &:nth-child(2) { transition-delay: 0.18s; }
+    &:nth-child(3) { transition-delay: 0.31s; }
+    &:nth-child(4) { transition-delay: 0.44s; }
+
+    @media (max-width: 600px) { min-width: 65px; padding: 1rem 0.5rem; }
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(115deg, transparent 30%, rgba(180, 120, 255, 0.15) 50%, transparent 70%);
+      background-size: 300% 100%;
+      background-position: 150% 0;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      pointer-events: none;
+    }
+
+    &:hover {
+      border-color: rgba(180, 120, 255, 0.5);
+      box-shadow:
+        0 12px 32px rgba(80, 0, 120, 0.25),
+        0 0 0 1px rgba(180, 120, 255, 0.1);
+      transform: translateY(-3px) scale(1.02);
+
+      &::after {
+        opacity: 1;
+        animation: blockShimmer 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+    }
+  }
+
+  /* Blocks animate in when parent gets .visible */
+  &.visible &__block {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  &__number {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    color: #c9a0e8;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+    animation: numberBreath 4s ease-in-out infinite;
+    display: inline-block;
+
+    .countdown__block:nth-child(2) & { animation-delay: 1s; }
+    .countdown__block:nth-child(3) & { animation-delay: 2s; }
+    .countdown__block:nth-child(4) & { animation-delay: 3s; }
+
+    &.flipping {
+      animation: numberFlip 0.38s cubic-bezier(0.4, 0, 0.2, 1) both;
+    }
+  }
+
+  &__label {
+    font-family: var(--font-accent);
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(200, 160, 240, 0.5);
+    transition: color 0.3s ease;
+
+    .countdown__block:hover & { color: #c9a0e8; }
+  }
+}
+
+@media (max-width: 768px) {
+  .countdown__number {
+    animation: none;
+  }
+
+  .countdown__block::after {
+    display: none;
+  }
+}
+
+@keyframes blockShimmer {
+  from { background-position: 150% 0; }
+  to   { background-position: -50% 0; }
+}
+
+@keyframes numberBreath {
+  0%, 100% { color: #c9a0e8; text-shadow: none; }
+  50%       { color: #e0b8ff; text-shadow: 0 0 24px rgba(180, 120, 255, 0.5); }
+}
+
+@keyframes numberFlip {
+  0%   { transform: scaleY(1) translateY(0);    opacity: 1; }
+  40%  { transform: scaleY(0) translateY(-6px); opacity: 0; }
+  41%  { transform: scaleY(0) translateY(6px);  opacity: 0; }
+  100% { transform: scaleY(1) translateY(0);    opacity: 1; }
+}

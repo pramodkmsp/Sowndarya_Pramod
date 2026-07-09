@@ -1,0 +1,81 @@
+<!-- Envelope screen — removed from DOM when done -->
+@if (state !== 'done') {
+<div class="invite-screen">
+
+  <!-- Looping background video -->
+  <video #inviteVideo class="invite-screen__video" autoplay muted loop playsinline preload="auto">
+    <source src="hero-bg2.mp4" type="video/mp4" />
+  </video>
+  <div class="invite-screen__overlay"></div>
+  <div class="envelope-underlay active"></div>
+
+  <!-- Top invitation text -->
+  <div class="invite-card" [class.fade-up]="state !== 'idle'">
+    <p class="invite-card__pre">You are specially invited to the</p>
+    <h1 class="invite-card__title">Engagement of</h1>
+    <p class="invite-card__names">Sowndarya Gowda D M <span class="amp">&amp;</span> Pramoda K M</p>
+  </div>
+
+  <!-- Envelope -->
+  <div class="envelope-wrap" (click)="onEnvelopeClick()" [class.clicked]="state !== 'idle'">
+    <!-- Letter: volcanic eruption bursting from the envelope -->
+    <div class="letter"
+         [class.out]="state === 'opening'"
+         [class.fullscreen]="state === 'expanding'">
+
+      <div class="eruption" [class.active]="state !== 'idle'">
+        <!-- Petals bursting out -->
+        <svg class="eruption__spark" viewBox="0 0 40 60"
+          *ngFor="let s of sparks"
+          [style.width]="s.size"
+          [style.height]="s.size"
+          [style.--x]="s.x"
+          [style.--y]="s.y"
+          [style.animationDelay]="s.animationDelay"
+          [style.animationDuration]="s.animationDuration">
+          <path d="M20 58 C10 45 0 30 5 15 C8 5 20 0 20 0 C20 0 32 5 35 15 C40 30 30 45 20 58Z"
+            fill="url(#burstP)"/>
+          <defs>
+            <linearGradient id="burstP" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#ffb3c1"/>
+              <stop offset="100%" stop-color="#e8002d"/>
+            </linearGradient>
+          </defs>
+        </svg>
+
+        <!-- Hearts floating out -->
+        <div class="eruption__ember"
+          *ngFor="let e of embers"
+          [style.fontSize]="e.size"
+          [style.--x]="e.x"
+          [style.--y]="e.y"
+          [style.animationDelay]="e.animationDelay"
+          [style.animationDuration]="e.animationDuration">♥</div>
+
+      </div>
+
+    </div>
+
+    <!-- Layer 1: Envelope Body -->
+    <img class="env-body" src="env-body.svg" alt="Envelope Body" draggable="false" />
+
+    <!-- Layer 2: Flap -->
+    <img class="env-flap" src="env-flap.svg" [class.open]="state === 'opening' || state === 'expanding'" alt="Flap" draggable="false" />
+
+    <!-- Black reveal blocker — fades out when envelope is opened -->
+    <div class="env-blocker" [class.revealed]="state !== 'idle'"></div>
+
+    <!-- Click hint -->
+    <div class="click-hint" [class.hide]="state !== 'idle'">
+      <span class="click-hint__dot"></span>
+      <span class="click-hint__text">Click to open</span>
+    </div>
+  </div>
+
+</div>
+}
+
+<!-- Site content: always in DOM, fades in after letter expands -->
+<div class="site-content" [class.visible]="state === 'expanding' || state === 'done'">
+  <ng-content></ng-content>
+</div>

@@ -1,0 +1,82 @@
+<div class="places" [class.visible]="isVisible">
+
+  <!-- Section Header -->
+  <div class="places__header">
+    <h2 class="places__script">Explore Nearby</h2>
+    <div class="places__divider">
+      <span class="places__divider-line"></span>
+      <span class="places__divider-diamond">◆ ◆ ◆</span>
+      <span class="places__divider-line"></span>
+    </div>
+    <p class="places__subtitle">PLACES TO VISIT NEAR KIKKERI</p>
+    <p class="places__intro">
+      While you're here to celebrate with us, take a moment to discover the
+      natural beauty and rich heritage of the Kaveri or Hemavathi delta region.
+    </p>
+  </div>
+
+  <!-- Cards Grid -->
+  <div class="places__grid">
+    <article
+      class="place-card"
+      *ngFor="let place of places; let i = index"
+      [style.--card-index]="i"
+    >
+      <!-- Photo -->
+      <div class="place-card__photo">
+        <img
+          [src]="place.imageUrl"
+          [alt]="place.imageAlt"
+          loading="lazy"
+          decoding="async"
+          (error)="onImgError($event, place)"
+        />
+        <div class="place-card__photo-overlay"></div>
+        <div class="place-card__distance-badge">
+          <span class="place-card__distance-icon">📍</span>
+          {{ place.distance }}
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="place-card__content">
+        <div class="place-card__tags">
+          <span class="place-card__tag" *ngFor="let tag of place.tags">{{ tag }}</span>
+        </div>
+
+        <h3 class="place-card__name">{{ place.name }}</h3>
+        <p class="place-card__tagline">{{ place.tagline }}</p>
+        <p class="place-card__description">{{ place.description }}</p>
+
+        <div class="place-card__meta">
+          <span class="place-card__meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+            {{ place.duration }}
+          </span>
+          <a
+            [href]="place.mapsUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="place-card__maps-btn"
+            [attr.aria-label]="'Open ' + place.name + ' in Google Maps'"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            Directions
+          </a>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <!-- Footer note -->
+  <p class="places__footer-note">
+    ✦ All distances are approximate from Kikkeri town centre ✦
+  </p>
+
+</div>

@@ -1,0 +1,100 @@
+<div class="divider" aria-hidden="true">
+  <svg class="divider__svg" viewBox="0 0 800 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+    <defs>
+      <!-- Gradient for lines fading in from center -->
+      <linearGradient id="lineLeft" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%"   stop-color="rgba(180,120,255,0)"/>
+        <stop offset="100%" stop-color="rgba(180,120,255,0.55)"/>
+      </linearGradient>
+      <linearGradient id="lineRight" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%"   stop-color="rgba(180,120,255,0.55)"/>
+        <stop offset="100%" stop-color="rgba(180,120,255,0)"/>
+      </linearGradient>
+      <!-- Glow filter for center ornament -->
+      <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="2.5" result="blur"/>
+        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <filter id="softGlow" x="-100%" y="-100%" width="300%" height="300%">
+        <feGaussianBlur stdDeviation="4" result="blur"/>
+        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+    </defs>
+
+    <!-- ── Left rule lines ── -->
+    <line class="rule rule--left-outer" x1="30" y1="28" x2="330" y2="28" stroke="url(#lineLeft)" stroke-width="0.6"/>
+    <line class="rule rule--left-inner" x1="80" y1="32" x2="330" y2="32" stroke="url(#lineLeft)" stroke-width="0.3"/>
+
+    <!-- ── Right rule lines ── -->
+    <line class="rule rule--right-outer" x1="470" y1="28" x2="770" y2="28" stroke="url(#lineRight)" stroke-width="0.6"/>
+    <line class="rule rule--right-inner" x1="470" y1="32" x2="720" y2="32" stroke="url(#lineRight)" stroke-width="0.3"/>
+
+    <!-- ── Left ornament dots ── -->
+    <circle class="dot dot--l1" cx="80"  cy="30" r="1.2" fill="rgba(180,120,255,0.5)"/>
+    <circle class="dot dot--l2" cx="120" cy="30" r="0.8" fill="rgba(180,120,255,0.35)"/>
+    <circle class="dot dot--l3" cx="160" cy="30" r="0.8" fill="rgba(180,120,255,0.35)"/>
+
+    <!-- ── Right ornament dots ── -->
+    <circle class="dot dot--r1" cx="720" cy="30" r="1.2" fill="rgba(180,120,255,0.5)"/>
+    <circle class="dot dot--r2" cx="680" cy="30" r="0.8" fill="rgba(180,120,255,0.35)"/>
+    <circle class="dot dot--r3" cx="640" cy="30" r="0.8" fill="rgba(180,120,255,0.35)"/>
+
+    <!-- ── Center filigree group ── -->
+    <g class="center-ornament" transform="translate(400,30)" filter="url(#glow)">
+
+      <!-- Thin curved scrolls left -->
+      <path class="scroll scroll--l"
+        d="M -60,0 C -45,-8 -30,-12 -20,0 C -30,12 -45,8 -60,0 Z"
+        fill="none" stroke="rgba(200,150,255,0.6)" stroke-width="0.8" stroke-linecap="round"/>
+      <path class="scroll-tail scroll-tail--l"
+        d="M -60,0 C -72,-4 -78,0 -72,6"
+        fill="none" stroke="rgba(180,120,255,0.4)" stroke-width="0.7" stroke-linecap="round"/>
+
+      <!-- Thin curved scrolls right -->
+      <path class="scroll scroll--r"
+        d="M 60,0 C 45,-8 30,-12 20,0 C 30,12 45,8 60,0 Z"
+        fill="none" stroke="rgba(200,150,255,0.6)" stroke-width="0.8" stroke-linecap="round"/>
+      <path class="scroll-tail scroll-tail--r"
+        d="M 60,0 C 72,-4 78,0 72,6"
+        fill="none" stroke="rgba(180,120,255,0.4)" stroke-width="0.7" stroke-linecap="round"/>
+
+      <!-- Small cross arms -->
+      <line x1="-14" y1="0" x2="14" y2="0" stroke="rgba(200,150,255,0.45)" stroke-width="0.5"/>
+      <line x1="0" y1="-14" x2="0" y2="14" stroke="rgba(200,150,255,0.45)" stroke-width="0.5"/>
+
+      <!-- Outer ring -->
+      <circle class="ring ring--outer" cx="0" cy="0" r="12"
+        fill="none" stroke="rgba(180,120,255,0.35)" stroke-width="0.6"
+        stroke-dasharray="3 3"/>
+
+      <!-- Inner ring -->
+      <circle class="ring ring--inner" cx="0" cy="0" r="7"
+        fill="none" stroke="rgba(200,160,255,0.4)" stroke-width="0.5"/>
+
+      <!-- Diamond -->
+      <g class="diamond" filter="url(#softGlow)">
+        <polygon
+          points="0,-7 5,0 0,7 -5,0"
+          fill="rgba(200,140,255,0.15)"
+          stroke="rgba(220,170,255,0.8)"
+          stroke-width="0.7"/>
+        <!-- inner diamond highlight -->
+        <polygon
+          points="0,-3.5 2.5,0 0,3.5 -2.5,0"
+          fill="rgba(230,190,255,0.25)"
+          stroke="rgba(240,210,255,0.6)"
+          stroke-width="0.4"/>
+      </g>
+
+      <!-- Tiny accent stars at 45° -->
+      <g class="accent-stars">
+        <circle cx="17"  cy="0"  r="1"   fill="rgba(220,170,255,0.7)"/>
+        <circle cx="-17" cy="0"  r="1"   fill="rgba(220,170,255,0.7)"/>
+        <circle cx="0"   cy="17" r="0.8" fill="rgba(220,170,255,0.5)"/>
+        <circle cx="0"   cy="-17" r="0.8" fill="rgba(220,170,255,0.5)"/>
+      </g>
+
+    </g>
+
+  </svg>
+</div>
