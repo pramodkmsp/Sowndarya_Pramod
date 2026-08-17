@@ -134,6 +134,11 @@
   }
 }
 
+@keyframes heroSmallReveal {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 @keyframes zoomBlinkPulse {
   0%, 100% {
     transform: scale(1);
@@ -186,13 +191,14 @@
   flex-direction: column;
   align-items: center;
   gap: 0.2rem;
+  z-index: 3;
   opacity: 0;
   animation: heroSmallReveal 1s cubic-bezier(0.16, 1, 0.3, 1) 2s both;
   cursor: pointer;
   background: rgba(0, 0, 0, 0.55);
   border: 1px solid rgba(201, 169, 110, 0.6);
   border-radius: 999px;
-  padding: 0.6rem 1.2rem 0.5rem;
+  padding: 0.6rem 2.2rem 0.5rem;
 
   @media (max-height: 500px) { display: none; }
 }
