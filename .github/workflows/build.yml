@@ -30,7 +30,7 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npm run build -- --base-href /Pramod_Sowndarya/
+        run: npm run build -- --base-href /Sowndarya_Pramod/
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
