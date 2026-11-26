@@ -231,6 +231,19 @@
   }
 }
 
+.countdown__schedule {
+  margin: 0;
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: #c9a0e8;
+  line-height: 1.5;
+
+  strong {
+    font-weight: 800;
+  }
+}
+
 @media (max-width: 768px) {
   .countdown__number {
     animation: none;
