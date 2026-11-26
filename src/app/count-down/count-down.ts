@@ -15,7 +15,7 @@ export class CountDown implements OnInit, OnDestroy {
   'https://calendar.google.com/calendar/render?action=TEMPLATE' +
   '&text=Sowndarya+Gowda+D+M+%26+Pramoda+K+M+Wedding' +
   '&dates=20261213T040000Z/20261213T050000Z' +
-  '&details=Wedding+Muhurtham:+13+Dec+2026,+9:30+AM+to+10:30+AM.%0AReception:+12+Dec+2026,+7:00+PM+onwards.' +
+  '&details=Join+us+as+we+celebrate+the+wedding+of+Sowndarya+Gowda+D+M+%26+Pramoda+K+M!%0A%0AReception:+12+Dec+2026,+7:00+PM+onwards.%0AWedding+Muhurtham:+13+Dec+2026,+9:30+AM+to+10:30+AM.' +
   '&location=Nanjamma+Muddegowda+Samudaya+Bhavana,+MF8H%2B5R4,+Krishnarajpete,+Karnataka+571426';
 
   downloadIcs(): void {
@@ -26,7 +26,7 @@ export class CountDown implements OnInit, OnDestroy {
       'DTSTART:20261213T040000Z',
       'DTEND:20261213T050000Z',
       'SUMMARY:Sowndarya Gowda D M & Pramoda K M Wedding Muhurtham',
-      'DESCRIPTION:Wedding Muhurtham from 9:30 AM to 10:30 AM. Reception: 12 Dec 2026 from 7:00 PM onwards.',
+      'DESCRIPTION:Join us as we celebrate the wedding of Sowndarya Gowda D M & Pramoda K M!\\n\\nReception: 12 Dec 2026, 7:00 PM onwards.\\nWedding Muhurtham: 13 Dec 2026, 9:30 AM to 10:30 AM.',
       'LOCATION:Nanjamma Muddegowda Samudaya Bhavana, MF8H+5R4, Krishnarajpete, Karnataka 571426',
       'END:VEVENT',
       'END:VCALENDAR'
